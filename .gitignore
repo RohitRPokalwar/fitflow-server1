@@ -23,3 +23,6 @@ yarn-debug.log*
 
 # Miscellaneous
 *.log
+node_modules
+.env
+
