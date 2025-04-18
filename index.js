@@ -1,9 +1,8 @@
-// index.js
-
 const express = require("express");
 const cors = require("cors");
-const { sendEmail } = require("./mailer");  // Import the sendEmail function
 require("dotenv").config();  // Load environment variables
+const sendEmail = require('./api/send');  // Assuming send.js is in the same directory as index.js
+// Correct path to send.js
 
 const app = express();
 app.use(cors());
@@ -17,9 +16,8 @@ app.post("/send-email", async (req, res) => {
     const { to, subject, text } = req.body;
 
     try {
-        // Use the sendEmail function from mailer.js
+        // Use the sendEmail function from send.js
         await sendEmail(to, subject, text);
-
         res.status(200).send("Email sent!");
     } catch (err) {
         console.error("❌ Email error:", err);
